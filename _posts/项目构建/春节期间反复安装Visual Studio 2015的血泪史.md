@@ -1,0 +1,43 @@
+---
+layout: post
+title:  "春节期间反复安装Visual Studio 2015的血泪史！"
+date:   2017-01-27 13:31:01 +0800
+categories: sky
+tag: vs2015
+---
+
+* content
+{:toc}
+
+
+
+1. 基础环境：windows 7 & windows10，visual studio 2015 企业版
+2. 血泪简史：win7使用下载器在线安装（阴历29）-卸载-安装win10-在线安装（除夕）-重装win10-离线安装（除夕）-卸载重装（大年初一）！
+3. 不要问我为什么。这一通折腾下来总结起来就一个理由。。。任性！win7下安装成功后正常创建项目也出现了各种缺少组件的报错信息，所以直接升级win10了。其实我只是想看看用asp.net 5模板构建的web项目目录结构，可是我却在百度的引导下掉到坑里了（也可能是我就一直在坑里。。。）反复折腾这么多遍是因为我安装后按百度搜索Visual Studio 2015 开发 ASP.NET 5 有何变化？（http://www.knowsky.com/606060.html）操作后根本找不到 asp.Net 5 Starter Web模板，创建web项目时候只有原来带有上角标“4”的各种模板，在创建web项目时候都有一个“ASP.NET5 模板”目录下脚“get....”什么什么的模板（忘记截图了），意思是在线下载.net core插件，我就点了也下载安装成功了，接下来就是见证奇迹的时候了~~~新建项目
+![新建项目]({{ '/styles/images/vs2015setup/01.png' | prepend: site.baseurl  }})
+后就变成下图这样了！：
+![]({{ '/styles/images/vs2015setup/02.png' | prepend: site.baseurl  }})
+所有关于asp.net5模板的东西都不见了！就这样我就各种查找论坛，想找个大神给个完美的解释，可是木有。。。真木有。。。我还突发奇想地使用了“单击此处以联机查找模板”
+![]({{ '/styles/images/vs2015setup/03.png' | prepend: site.baseurl  }})
+的功能，真的找到了个asp.net5模板，可是安装之后整个vs都各种报错，我不想再为一个下载的模板操心了，只能假设自己安装的组件有问题，各种安装卸载，期间我也发现了一个现象就是每次安装位.net core组建后原本只有一个的web项目模板变成了下图三个
+![]({{ '/styles/images/vs2015setup/04.png' | prepend: site.baseurl  }})
+ 
+我也怀疑过是不是asp.net 5模板位置变了，我想这么大的事儿各种技术大拿不能不说啊，可是百度以及必应了好多中文网站论坛都没找到类似的解释（而且网上有关vs2015的总结基本都是14，15年正式版出来前测试版的文章），最后我在必应里的一个外国论坛里面用我这穷的可怜的英文找到了一点提示也符合了我的猜测，就是ASP.NET 5模板就是上图中的ASP.NET Core Web Application！.NET Core是新的跨平台框架，.NET Framework是兼容以前的框架。。。（这个猜测我并没有在官网的vs正式版发布包以及更新包中找到，也可能是我英文不好没看到，或者是我的总结是错误的，如果错了希望有大神可以指出。），知道这个后我终于可以看见熟悉而又陌生的C#.NET项目了：
+![]({{ '/styles/images/vs2015setup/05.png' | prepend: site.baseurl  }})
+好了，不哭了。。。擦干泪去研究一下新的项目目录结构，等有了进展再来总结。
+
+ps：文档写完后要发布的时候在微软文档上找到了这么一段，，，https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api估计可以证实我的猜测，就把这段总结送给那些和我一样英语忒差的朋友们吧。。。
+下面附一下vs2015和asp.net5的一些官话：
+基于Visual Studio 2015，你可以：
+  ● 方便的管理前端包，如jQuery, Bootstrap, 或Angular。
+  ● 自动运行任务，如LESS、JavaScript压缩、JSLint、JavaScript单元测试等。
+  ● 方便的获得Web开发者生态圈的工具包。
+为了实现这些场景，Visual Studio 2015已经内置了一些流行的第三方工具包：
+  ● Bower：Web包管理器，Bower可以帮你安装前端包，包括JavaScript、CSS类库。对于服务器端包，请通过NuGet包管理。
+  ● Grunt and Gulp：Grunt和Gulp是基于JavaScript的运行任务。如你未用过类似功能，可以认为这是一个自动调度运行的app，ASP.NET 5工程模板使用的是Grunt运行任务。
+  ● npm (Node Package Manager). npm是一个node包管理器，最初被用于Node.js包管理。上面说的Bower、Grunt、Gulp用到了npm。
+ 
+ASP.NET 5 是一个用于构建现代 web 应用的开源 web 框架，它支持 Windows, Linux 和 Mac 平台。它包含 MVC6 框架，此框架将 MVC 和 Web API 整合成为一个单一的 web 编程框架。ASP.NET 5 还将成为 SignalR3 的基础 ，SignalR3 可以让你为“云应用”添加实时功能。ASP.NET 5 是在 .NET Core 运行时(.NET Core runtime)上构建的，但是为了保持最大的兼容性，它也可以运行在完全的 .NET Framework 框架之上。
+ 
+一个测试插件application insights：它可以测试你的应用程序，以确保其可用，表现良好，并且可以成功使用。它结合了性能管理和使用分析的功能，目的在于帮助开发者们创建尽可能好的应用程序。
+ 
